@@ -369,7 +369,7 @@ Project Link: [https://github.com/diogolleitao/RSafeFS](https://github.com/diogo
 [issues-shield]: https://img.shields.io/github/issues/diogolleitao/RSafeFS.svg?style=for-the-badge
 [issues-url]: https://github.com/diogolleitao/RSafeFS/issues
 [license-shield]: https://img.shields.io/github/license/diogolleitao/RSafeFS.svg?style=for-the-badge
-[license-url]: https://github.com/diogolleitao/RSafeFS/blob/master/LICENSE
+[license-url]: https://github.com/diogolleitao/RSafeFS/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/diogolleitao
 [product-screenshot]: images/screenshot.png
