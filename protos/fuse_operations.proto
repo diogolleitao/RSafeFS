@@ -1,0 +1,466 @@
+syntax = "proto3";
+
+package fuse_grpc_proto;
+
+service FuseOps {
+    rpc Getattr (GetattrRequest) returns (GetattrReply) {}
+    rpc Fgetattr (FgetattrRequest) returns (FgetattrReply) {}
+    rpc Access (AccessRequest) returns (AccessReply) {}
+    rpc Readlink (ReadlinkRequest) returns (ReadlinkReply) {}
+    rpc Opendir (OpendirRequest) returns (OpendirReply) {}
+    rpc Readdir (ReaddirRequest) returns (ReaddirReply) {}
+    rpc Releasedir (ReleasedirRequest) returns (ReleasedirReply) {}
+    rpc Mknod (MknodRequest) returns (MknodReply) {}
+    rpc Mkdir (MkdirRequest) returns (MkdirReply) {}
+    rpc Symlink (SymlinkRequest) returns (SymlinkReply) {}
+    rpc Unlink (UnlinkRequest) returns (UnlinkReply) {}
+    rpc Rmdir (RmdirRequest) returns (RmdirReply) {}
+    rpc Rename (RenameRequest) returns (RenameReply) {}
+    rpc Link (LinkRequest) returns (LinkReply) {}
+    rpc Chmod (ChmodRequest) returns (ChmodReply) {}
+    rpc Chown (ChownRequest) returns (ChownReply) {}
+    rpc Truncate (TruncateRequest) returns (TruncateReply) {}
+    rpc Ftruncate (FtruncateRequest) returns (FtruncateReply) {}
+    rpc Utimens (UtimensRequest) returns (UtimensReply) {}
+    rpc Create (CreateRequest) returns (CreateReply) {}
+    rpc Open (OpenRequest) returns (OpenReply) {}
+    rpc Read (ReadRequest) returns (ReadReply) {}
+    rpc Write (WriteRequest) returns (WriteReply) {}
+    rpc Statfs (StatfsRequest) returns (StatfsReply) {}
+    rpc Flush (FlushRequest) returns (FlushReply) {}
+    rpc Release (ReleaseRequest) returns (ReleaseReply) {}
+    rpc Fsync (FsyncRequest) returns (FsyncReply) {}
+    rpc Fallocate (FallocateRequest) returns (FallocateReply) {}
+    rpc Setxattr (SetxattrRequest) returns (SetxattrReply) {}
+    rpc Getxattr (GetxattrRequest) returns (GetxattrReply) {}
+    rpc Listxattr (ListxattrRequest) returns (ListxattrReply) {}
+    rpc Removexattr (RemovexattrRequest) returns (RemovexattrReply) {}
+
+    rpc StreamRead (stream ReadRequest) returns (stream ReadReply) {}
+    rpc StreamWrite (stream WriteRequest) returns (stream WriteReply) {}
+    rpc ACStreamWrite (stream WriteRequest) returns (WriteReply) {}
+    rpc GetattrCompound (GetattrCompoundRequest) returns (GetattrCompoundReply) {}
+}
+
+
+// Getattr
+message GetattrRequest {
+    string path = 1;
+}
+
+message GetattrReply {
+    int32 result = 1;
+    StructStat stbuf = 2;
+}
+
+// Fgetattr
+message FgetattrRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message FgetattrReply {
+    int32 result = 1;
+    StructStat stbuf = 2;
+    StructFuseFileInfo info = 3;
+}
+
+// Access
+message AccessRequest {
+    string path = 1;
+    int32 mask = 2;
+}
+
+message AccessReply {
+    int32 result = 1;
+}
+
+// Readlink
+message ReadlinkRequest {
+    string path = 1;
+    uint64 size = 2;
+}
+
+message ReadlinkReply {
+    int32 result = 1;
+    string buf = 2;
+}
+
+// Opendir
+message OpendirRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message OpendirReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Readdir
+message ReaddirRequest {
+    string path = 1;
+    uint64 offset = 2;
+    StructFuseFileInfo info = 3;
+}
+
+message ReaddirReply {
+    int32 result = 1;
+    repeated StructDirInfoEntry dir_info_entries = 2;
+    StructFuseFileInfo info = 3;
+}
+
+// Releasedir
+message ReleasedirRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message ReleasedirReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Mknod
+message MknodRequest {
+    string path = 1;
+    uint32 mode = 2;
+    int64 rdev = 3;
+}
+
+message MknodReply {
+    int32 result = 1;
+}
+
+// Mkdir
+message MkdirRequest {
+    string path = 1;
+    uint32 mode = 2;
+}
+
+message MkdirReply {
+    int32 result = 1;
+}
+
+// Unlink
+message UnlinkRequest {
+    string path = 1;
+}
+
+message UnlinkReply {
+    int32 result = 1;
+}
+
+// Rmdir
+message RmdirRequest {
+    string path = 1;
+}
+
+message RmdirReply {
+    int32 result = 1;
+}
+
+// Symlink
+message SymlinkRequest {
+    string from = 1;
+    string to = 2;
+}
+
+message SymlinkReply {
+    int32 result = 1;
+}
+
+// Rename
+message RenameRequest {
+    string from = 1;
+    string to = 2;
+}
+
+message RenameReply {
+    int32 result = 1;
+}
+
+// Link
+message LinkRequest {
+    string from = 1;
+    string to = 2;
+}
+
+message LinkReply {
+    int32 result = 1;
+}
+
+// Chmod
+message ChmodRequest {
+    string path = 1;
+    uint32 mode = 2;
+}
+
+message ChmodReply {
+    int32 result = 1;
+}
+
+// Chown
+message ChownRequest {
+    string path = 1;
+    uint32 uid = 2;
+    uint32 gid = 3;
+}
+
+message ChownReply {
+    int32 result = 1;
+}
+
+// Truncate
+message TruncateRequest {
+    string path = 1;
+    int64 size = 2;
+}
+
+message TruncateReply {
+    int32 result = 1;
+}
+
+// Ftruncate
+message FtruncateRequest {
+    string path = 1;
+    int64 size = 2;
+    StructFuseFileInfo info = 3;
+}
+
+message FtruncateReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Utimens
+message UtimensRequest {
+    string path = 1;
+    StructTimespec tim0 = 2;
+    StructTimespec tim1 = 3;
+}
+
+message UtimensReply {
+    int32 result = 1;
+}
+
+// Create
+message CreateRequest {
+    string path = 1;
+    uint32 mode = 2;
+    StructFuseFileInfo info = 3;
+}
+
+message CreateReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Open
+message OpenRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message OpenReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Read
+message ReadRequest {
+    string path = 1;
+    uint64 size = 2;
+    int64 offset = 3;
+    StructFuseFileInfo info = 4;
+}
+
+message ReadReply {
+    int32 result = 1;
+    bytes buf = 2;
+    StructFuseFileInfo info = 3;
+}
+
+// Write
+message WriteRequest {
+    string path = 1;
+    uint64 size = 2;
+    int64 offset = 3;
+    bytes buf = 4;
+    StructFuseFileInfo info = 5;
+}
+
+message WriteReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Statfs
+message StatfsRequest {
+    string path = 1;
+}
+
+message StatfsReply {
+    int32 result = 1;
+    StructStatvfs stbuf = 2;
+}
+
+// Flush
+message FlushRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message FlushReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Release
+message ReleaseRequest {
+    string path = 1;
+    StructFuseFileInfo info = 2;
+}
+
+message ReleaseReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Fsync
+message FsyncRequest {
+    string path = 1;
+    int32 isdatasync = 2;
+    StructFuseFileInfo info = 3;
+}
+
+message FsyncReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Fallocate
+message FallocateRequest {
+    string path = 1;
+    int32 mode = 2;
+    int64 offset = 3;
+    int64 length = 4;
+    StructFuseFileInfo info = 5;
+}
+
+message FallocateReply {
+    int32 result = 1;
+    StructFuseFileInfo info = 2;
+}
+
+// Setxattr
+message SetxattrRequest {
+    string path = 1;
+    string name = 2;
+    uint64 size = 3;
+    int32 flags = 4;
+    bytes value = 5;
+}
+
+message SetxattrReply {
+    int32 result = 1;
+}
+
+// Getxattr
+message GetxattrRequest {
+    string path = 1;
+    string name = 2;
+    uint64 size = 3;
+}
+
+message GetxattrReply {
+    int32 result = 1;
+    bytes value = 2;
+}
+
+// Listxattr
+message ListxattrRequest {
+    string path = 1;
+    uint64 size = 2;
+}
+
+message ListxattrReply {
+    int32 result = 1;
+    bytes list = 2;
+}
+
+// Removexattr
+message RemovexattrRequest {
+    string path = 1;
+    string name = 2;
+}
+
+message RemovexattrReply {
+    int32 result = 1;
+}
+
+// GetattrCompound
+message GetattrCompoundRequest {
+    repeated string paths = 1;
+}
+
+message GetattrCompoundReply {
+    map<string, StructStat> compound = 1;
+    repeated string removed_paths = 2;
+}
+
+// Structs
+message StructStat {
+    int32 dev = 1;
+    uint64 ino = 2;
+    uint32 mode = 3;
+    uint32 nlink = 4;
+    uint32 uid = 5;
+    uint32 gid = 6;
+    int32 rdev = 7;
+    uint64 size = 8;
+    uint32 blksize = 9;
+    uint64 blocks = 10;
+    StructTimespec atim = 11;
+    StructTimespec mtim = 12;
+    StructTimespec ctim = 13;
+}
+
+message StructTimespec {
+    uint64 sec = 1;
+    uint64 nsec = 2;
+}
+
+message StructFuseFileInfo {
+    int32 flags = 1;
+    uint64 fh_old = 2;
+    int32 writepage = 3;
+    uint32 direct_io = 4;
+    uint32 keep_cache = 5;
+    uint32 flush = 6;
+    uint32 nonseekable = 7;
+    uint32 flock_release = 8;
+    uint32 padding = 9;
+    uint64 fh = 10;
+    uint64 lock_owner = 11;
+}
+
+message StructStatvfs {
+    uint64 bsize = 1;
+    uint64 frsize = 2;
+    uint32 blocks = 3;
+    uint32 bfree = 4;
+    uint32 bavail = 5;
+    uint32 files = 6;
+    uint32 ffree = 7;
+    uint32 favail = 8;
+    uint64 fsid = 9;
+    uint64 flag = 10;
+    uint64 namemax = 11;
+}
+
+message StructDirInfoEntry {
+    string name = 1;
+    StructStat stbuf = 2;
+    uint64 offset = 3;
+}

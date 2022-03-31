@@ -1,0 +1,7 @@
+rpc_client:
+  server_address: localhost:50051
+  mode: sync
+metadata_cache:
+  size: 16777216 # 16 MiB
+  time_out: 30 # 30 seconds
+  eviction_policy: rnd # random eviction

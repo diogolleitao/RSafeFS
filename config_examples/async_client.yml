@@ -1,0 +1,18 @@
+rpc_client:
+  server_address: localhost:50051
+  mode: async
+  cache_size: 1073741824 # 1 GiB
+  block_size: 1048576 # 1 MiB
+  threads: 4
+  flush_threshold: 0.3 # 30% cache size
+read_ahead:
+  size: 1048576 # 1 MiB
+metadata_cache:
+  size: 16777216 # 16 MiB
+  time_out: 30 # 30 seconds
+  eviction_policy: rnd # random eviction
+data_cache:
+  size: 1073741824 # 1 GiB
+  block_size: 1048576 # 1 MiB
+  time_out: 30 # 30 seconds
+  eviction_policy: lru # lru (least recently used) eviction

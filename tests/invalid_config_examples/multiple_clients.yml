@@ -1,0 +1,5 @@
+# Note: Invalid configuration file, only used for testing failures
+rpc_client:
+  server_address: localhost:50051
+rpc_client:
+  server_address: localhost:50051

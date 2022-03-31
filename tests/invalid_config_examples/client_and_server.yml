@@ -1,0 +1,7 @@
+# Note: Invalid configuration file, only used for testing failures
+rpc_client:
+  server_address: localhost:50051
+rpc_server:
+  server_address: 0.0.0.0:50051
+  n_queues: 1
+  n_pollers_per_queue: 4

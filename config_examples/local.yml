@@ -1,0 +1,8 @@
+local:
+  path: /tmp  # exported directory
+  mode: local # passthrough
+data_cache:
+  size: 1073741824 # 1 GiB
+  block_size: 1048576 # 1 MiB
+  time_out: 30 # 30 seconds
+  eviction_policy: rnd # random eviction
