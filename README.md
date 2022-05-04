@@ -311,7 +311,7 @@ As for the client, the server receives the configuration file in the `--conf` op
     - [X] LRU - Least Recently Used
     - [X] RND - Random 
     - [ ] LFU
-  - Communication Protocols
+  - RPC Frameworks
     - [X] gRPC
     - [ ] other RPC libraries (Cap'n Proto, Thirft, ...)
 
